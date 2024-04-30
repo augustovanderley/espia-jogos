@@ -1,3 +1,4 @@
 ipython
 ipdb
 requests
+python-dotenv
