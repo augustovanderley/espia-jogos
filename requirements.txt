@@ -2,3 +2,4 @@ ipython
 ipdb
 requests
 python-dotenv
+ruff
