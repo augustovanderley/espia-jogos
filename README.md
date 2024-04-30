@@ -4,18 +4,15 @@ Este projeto visa mostrar quais são os seus amigos que possuem um determinado j
 
 ## Getting Started
 
-Primeiro, você deve exportar carregar a variável de ambiente com o `access_token` da ludopedia. Caso não tenha token, siga as instruções da [documentação da API](https://ludopedia.com.br/api/documentacao.html#section/Aplicativo), criando o seu próprio aplicativo. 
+Primeiro, você deve duplicar o arquivo `env.example`, criando um arquivo chamado `.env` e adicionando a variável de ambiente com o valor do `access_token` da ludopedia. Caso não tenha token, siga as instruções da [documentação da API](https://ludopedia.com.br/api/documentacao.html#section/Aplicativo), criando o seu próprio aplicativo. 
 
-```bash
-export LUDOPEDIA_ACCESS_TOKEN=<value>
-```
 
 ## Como rodar o projeto
 
-Para executar o projeto, você precisa ter python 3.12 e instalar as bibliotecas usando o comando abaixo: 
+Para executar o projeto, você precisa ter python 3.12 e instalar o pacote localmente, com 
 
-```bash
-pip install requirements.txt
+```
+pip install -e .
 ```
 
 ### Cadastrando amigos
@@ -35,7 +32,7 @@ Para cadastrar novos amigos, você precisa criar um arquivo `meus_amigos.json` n
 Para conseguir descobrir o id do usuário, é necessário rodar o seguinte comando, colocando o nome exato dos usuários:
 
 ```bash
-> python busca_usuario.py AugustVanderley
+> espia usuario AugustVanderley
 {
     "id": 104391,
     "usuario": "AugustVanderley",
@@ -50,7 +47,7 @@ Copie e cole o trecho acima no arquivo `meus_amigos.json` para adicionar o usuá
 Para realizar a busca de amigos que possuem um jogo, execute a seguinte chamada, aqui com exemplo do jogo "Food Chain Magnate":
 
 ```bash
-python main.py "food chain magnate"
+espia jogos "food chain magnate"
 ```
 
 O resultado mostrará as pessoas que possuem aquele jogo, assim como a nota que eles deram ao jogo. 
