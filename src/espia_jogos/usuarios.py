@@ -9,7 +9,7 @@ class Usuario:
     nome_legivel: str
 
 
-def load_usuarios_from_json(file_path):
+def load_usuarios_from_json(file_path: str) -> list[Usuario]:
     with open(file_path, "r") as file:
         data = json.load(file)
         return [Usuario(**item) for item in data]

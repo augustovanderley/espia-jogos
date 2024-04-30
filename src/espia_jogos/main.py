@@ -7,16 +7,15 @@ from .ludopedia import Ludopedia
 
 
 @click.group()
-def main():
+def main() -> None:
     pass
 
 
 @main.command()
 @click.argument("nome_jogo")
-def jogos(nome_jogo):
+def jogos(nome_jogo: str) -> None:
 
     print(f"Quem tem o jogo com o termo {nome_jogo}?")
-
     for usuario in usuarios:
         colecao = Ludopedia.request_collection(usuario.id, nome_jogo)
         print_collection(usuario, colecao)
@@ -24,16 +23,15 @@ def jogos(nome_jogo):
 
 @main.command()
 @click.argument("usuario_procurado")
-def usuario(usuario_procurado):
+def usuario(usuario_procurado: str) -> None:
     usuarios = Ludopedia.request_users(usuario_procurado)
-
     for usuario in usuarios:
         if usuario["usuario"].lower() == usuario_procurado.lower():
-            print(usuario)
+            print_usuario(usuario)
             break
 
 
-def print_collection(usuario, colecao):
+def print_collection(usuario: str, colecao: list[str]) -> None:
     if colecao:
         print("-" * 20)
         print(f"{usuario.nome_legivel}:")
@@ -45,7 +43,7 @@ def print_collection(usuario, colecao):
         print("")
 
 
-def print_usuario(usuario):
+def print_usuario(usuario: str) -> None:
     informacao = {
         "id": usuario["id_usuario"],
         "usuario": usuario["usuario"],

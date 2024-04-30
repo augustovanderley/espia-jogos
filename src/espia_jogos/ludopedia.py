@@ -12,7 +12,7 @@ class Ludopedia:
     headers = {"Authorization": f"Bearer {os.getenv("LUDOPEDIA_ACCESS_TOKEN")}"}
 
     @classmethod
-    def request_collection(cls, id_usuario, nome_jogo):
+    def request_collection(cls, id_usuario: str, nome_jogo: str) -> list[str]:
         endpoint = f"{cls.base_url}/colecao"
         params = {
             "id_usuario": id_usuario,
@@ -29,7 +29,7 @@ class Ludopedia:
         return response.json()["colecao"]
 
     @classmethod
-    def request_users(cls, usuario_procurado):
+    def request_users(cls, usuario_procurado: str) -> dict[str, str]:
         endpoint = f"{cls.base_url}/usuarios"
         params = {
             "search": usuario_procurado,
