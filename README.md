@@ -34,9 +34,10 @@ Para cadastrar novos amigos, você precisa criar um arquivo `meus_amigos.json` n
 ```json
 [
     {
-       "id":"104391",
+       "id_usuario":"104391",
        "usuario":"AugustVanderley",
-       "nome_legivel":"Augusto Vanderley"
+       "nome_legivel":"Augusto Vanderley",
+       "thumb": "https://ludopedia.com.br/uploads/avatar/avatar_104391_sm_1573572022.jpg"
     }
 ]
 ```

@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import json
 
 
@@ -6,7 +6,8 @@ import json
 class Usuario:
     id_usuario: int
     usuario: str
-    thumb: str
+    nome_legivel: str = field(default='')
+    thumb: str = field(default='')
 
 
 def load_usuarios_from_json(file_path: str) -> list[Usuario]:
