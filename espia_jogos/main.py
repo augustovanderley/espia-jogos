@@ -1,28 +1,28 @@
 import json
+import typer
 
-import click
+from espia_jogos.usuarios import usuarios
+from espia_jogos.ludopedia import Ludopedia
 
-from .usuarios import usuarios
-from .ludopedia import Ludopedia
-
-
-@click.group()
-def main() -> None:
-    pass
+app = typer.Typer()
 
 
-@main.command()
-@click.argument("nome_jogo")
+@app.callback()
+def callback():
+    """
+    Espia Jogos dos Amigos
+    """
+
+
+@app.command()
 def jogos(nome_jogo: str) -> None:
-
     print(f"Quem tem o jogo com o termo {nome_jogo}?")
     for usuario in usuarios:
         colecao = Ludopedia.request_collection(usuario.id, nome_jogo)
         print_collection(usuario, colecao)
 
 
-@main.command()
-@click.argument("usuario_procurado")
+@app.command()
 def usuario(usuario_procurado: str) -> None:
     usuarios = Ludopedia.request_users(usuario_procurado)
     for usuario in usuarios:
@@ -50,3 +50,7 @@ def print_usuario(usuario: str) -> None:
         "nome_legivel": "INSIRA NOME LEGIVEL",
     }
     print(json.dumps(informacao, indent=4))
+
+
+if __name__ == "__main__":
+    app()

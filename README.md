@@ -9,11 +9,23 @@ Primeiro, você deve duplicar o arquivo `env.example`, criando um arquivo chamad
 
 ## Como rodar o projeto
 
-Para executar o projeto, você precisa ter python 3.12 e instalar o pacote localmente, com 
+Para executar o projeto, você precisa ter python 3.12 e poetry instalado, que pode ser instalado com:
 
 ```
-pip install -e .
+pip install poetry
 ```
+
+Depois, para rodar o projeto, você pode rodar usando:
+
+```bash
+make jogos JOGO="azul"
+```
+ou
+
+```bash
+make amigos AMIGO="felinto"
+```
+
 
 ### Cadastrando amigos
 
@@ -44,7 +56,7 @@ Copie e cole o trecho acima no arquivo `meus_amigos.json` para adicionar o usuá
 
 ### Buscando jogos na coleção de amigos
 
-Para realizar a busca de amigos que possuem um jogo, execute a seguinte chamada, aqui com exemplo do jogo "Food Chain Magnate":
+Uma vez com a lib instalada, para realizar a busca de amigos que possuem um jogo, execute a seguinte chamada, aqui com exemplo do jogo "Food Chain Magnate":
 
 ```bash
 espia jogos "food chain magnate"
