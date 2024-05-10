@@ -4,9 +4,9 @@ import json
 
 @dataclass
 class Usuario:
-    id: int
+    id_usuario: int
     usuario: str
-    nome_legivel: str
+    thumb: str
 
 
 def load_usuarios_from_json(file_path: str) -> list[Usuario]:
