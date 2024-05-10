@@ -11,21 +11,21 @@ Primeiro, você deve duplicar o arquivo `env.example`, criando um arquivo chamad
 
 Para executar o projeto, você precisa ter python 3.12 e poetry instalado, que pode ser instalado com:
 
-```
-pip install poetry
+```bash
+foo@bar:~$ pip install poetry
 ```
 
 Depois, para rodar o projeto, você pode rodar usando:
 
 ```bash
-make jogos JOGO="azul"
+foo@bar:~$ make jogos JOGO="azul"
 ```
+
 ou
 
 ```bash
-make amigos AMIGO="felinto"
+foo@bar:~$ make amigos AMIGO="felinto"
 ```
-
 
 ### Cadastrando amigos
 
@@ -44,7 +44,7 @@ Para cadastrar novos amigos, você precisa criar um arquivo `meus_amigos.json` n
 Para conseguir descobrir o id do usuário, é necessário rodar o seguinte comando, colocando o nome exato dos usuários:
 
 ```bash
-> espia usuario AugustVanderley
+foo@bar:~$ espia usuario AugustVanderley
 {
     "id": 104391,
     "usuario": "AugustVanderley",
@@ -59,7 +59,7 @@ Copie e cole o trecho acima no arquivo `meus_amigos.json` para adicionar o usuá
 Uma vez com a lib instalada, para realizar a busca de amigos que possuem um jogo, execute a seguinte chamada, aqui com exemplo do jogo "Food Chain Magnate":
 
 ```bash
-espia jogos "food chain magnate"
+foo@bar:~$ espia jogos "food chain magnate"
 ```
 
 O resultado mostrará as pessoas que possuem aquele jogo, assim como a nota que eles deram ao jogo. 
