@@ -1,6 +1,28 @@
+[tool.poetry]
+name = "espia-jogos"
+version = "0.1.0"
+description = "Projetinho pra espiar as coleçoes de jogos dos amigos"
+authors = ["Augusto Vanderley <augustovanderley@gmail.com.com>", "Dyego Soares"]
+readme = "README.md"
+
+[tool.poetry.scripts]
+espia = "espia_jogos.main:app"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+typer = {extras = ["all"], version = "^0.1.0"}
+requests = "^2.31.0"
+python-dotenv = "^1.0.1"
+
+[tool.poetry.group.dev.dependencies]
+ipdb = "^0.13.13"
+ipython = "^8.24.0"
+pytest = "^8.2.0"
+ruff = "^0.4.4"
+
 [build-system]
-requires = [
-    "setuptools>=65.5.1",
-    "wheel"
-]
-build-backend = "setuptools.build_meta"
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+[flake8]
+max-line-length = 88
