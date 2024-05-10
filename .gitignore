@@ -160,4 +160,4 @@ cython_debug/
 #.idea/
 
 
-meus_amigos.json
+meus_amigos*.json

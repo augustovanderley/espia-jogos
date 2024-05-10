@@ -55,7 +55,8 @@ def extrai_grupo(grupo: int, overwrite=True) -> None:
 def print_collection(usuario: str, colecao: list[str]) -> None:
     if colecao:
         print("-" * 20)
-        print(f"{usuario.usuario}:")
+        name_to_display = usuario.nome_legivel if usuario.nome_legivel else usuario.usuario
+        print(f"{name_to_display}:")
         print("")
         for jogo in colecao:
             nota = jogo["vl_nota"]

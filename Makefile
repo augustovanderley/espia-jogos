@@ -10,6 +10,9 @@ jogos:
 amigos:
 	poetry run espia usuario $(AMIGO)
 
+grupo:
+	poetry run espia extrai-grupo $(GRUPO)
+
 # Target to run tests
 check:
 	poetry run python -m pytest
