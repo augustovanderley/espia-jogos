@@ -1,5 +1,5 @@
 import streamlit as st
-from espia_jogos.usuarios import usuarios
+from espia_jogos.usuarios import load_usuarios_from_json
 from espia_jogos.ludopedia import Ludopedia
 
 
@@ -21,7 +21,7 @@ def display_collection(usuario, colecao):
         html_content += "</table>"
         col1, col2 = st.columns(2)
         with col1:
-            st.image(thumbnail_url, caption=name_to_display)
+            st.image(thumbnail_url, caption=name_to_display, width=50)
         with col2:
             st.markdown(html_content, unsafe_allow_html=True)
 
@@ -33,7 +33,7 @@ def app():
         submit_button = st.form_submit_button("Buscar jogos")
         
         if submit_button and nome_jogo:
-            for usuario in usuarios:
+            for usuario in load_usuarios_from_json("meus_amigos.json"):
                 colecao = Ludopedia.request_collection(usuario.id_usuario, nome_jogo)
                 if colecao:
                     display_collection(usuario, colecao)
