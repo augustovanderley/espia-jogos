@@ -1,14 +1,13 @@
-from pathlib import Path
-
 import json
+from pathlib import Path
 import typer
 
-from espia_jogos.usuarios import usuarios
+from espia_jogos.usuarios import usuarios, carrega_dados_de_grupo_de_usuarios, escreve_dados_usuarios
 from espia_jogos.ludopedia import Ludopedia
-from espia_jogos.scraper import Scraper
 
 app = typer.Typer()
 
+OUTPUT_CAMINHO_ARQUIVO = Path("meus_amigos.json")
 
 @app.callback()
 def callback():
@@ -35,21 +34,12 @@ def usuario(usuario_procurado: str) -> None:
 
 
 @app.command()
-def extrai_grupo(grupo: int, overwrite=True) -> None:
-    usuarios = Scraper.usuarios_do_grupo(grupo)
-
-    dados_usuario = []
-    for usuario in usuarios:
-        dados_usuario.extend(Ludopedia.request_users(usuario))
-
-    output_path = Path("meus_amigos.json")
-
-    if output_path.exists() and not overwrite:
-        with open(output_path, "r") as file:
-            dados_usuario.extend(json.loads(file.read()))
-
-    with open(output_path, "w") as file:
-        file.write(json.dumps(dados_usuario, indent=4))
+def extrai_grupo(id_grupo: int, overwrite=True, caminho_output : Path = OUTPUT_CAMINHO_ARQUIVO) -> None:
+    try:
+        dados_usuario = carrega_dados_de_grupo_de_usuarios(id_grupo)
+        escreve_dados_usuarios(dados_usuario, caminho_output, overwrite)
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 
 def print_collection(usuario: str, colecao: list[str]) -> None:
