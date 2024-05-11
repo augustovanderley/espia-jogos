@@ -9,11 +9,12 @@ runner = CliRunner()
 
 @pytest.fixture
 def mock_usuarios(monkeypatch):
-    fake_usuarios = [
-        Usuario(id_usuario=123, usuario='johndoe', nome_legivel='John Doe', thumb='path/to/thumb1.jpg'),
-        Usuario(id_usuario=456, usuario='janedoe', nome_legivel='Jane Doe', thumb='path/to/thumb2.jpg')
-    ]
-    monkeypatch.setattr('espia_jogos.main.usuarios', fake_usuarios)
+    def load_usuarios_from_json(caminho_arquivo):
+        return [
+            Usuario(id_usuario=123, usuario='johndoe', nome_legivel='John Doe', thumb='path/to/thumb1.jpg'),
+            Usuario(id_usuario=456, usuario='janedoe', nome_legivel='Jane Doe', thumb='path/to/thumb2.jpg')
+        ]
+    monkeypatch.setattr('espia_jogos.main.load_usuarios_from_json', load_usuarios_from_json)
 
 
 @pytest.fixture

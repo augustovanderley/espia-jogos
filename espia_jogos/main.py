@@ -27,7 +27,7 @@ def jogos(nome_jogo: str) -> None:
 @app.command()
 def usuario(usuario_procurado: str) -> None:
     usuarios = Ludopedia.request_users(usuario_procurado)
-    for usuario in load_usuarios_from_json("meus_amigos.json"):
+    for usuario in usuarios:
         if usuario["usuario"].lower() == usuario_procurado.lower():
             print_usuario(usuario)
             break

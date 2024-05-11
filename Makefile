@@ -15,7 +15,7 @@ grupo:
 
 # Target to run tests
 check:
-	poetry run python -m pytest
+	poetry run python -m pytest -vvv
 
 check-ipdb:
 	poetry run python -m pytest -s
