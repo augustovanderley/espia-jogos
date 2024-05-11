@@ -1,9 +1,8 @@
 import pytest
 from typer.testing import CliRunner
-from pathlib import Path
 
 from espia_jogos.usuarios import Usuario
-from espia_jogos.main import app, carrega_dados_de_grupo_de_usuarios, escreve_dados_usuarios
+from espia_jogos.main import app
 
 runner = CliRunner()
 

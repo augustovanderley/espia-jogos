@@ -1,12 +1,9 @@
-from typing import List
-
 import json
 from pathlib import Path
 import typer
 
 from espia_jogos.usuarios import usuarios, carrega_dados_de_grupo_de_usuarios, escreve_dados_usuarios
 from espia_jogos.ludopedia import Ludopedia
-from espia_jogos.scraper import Scraper
 
 app = typer.Typer()
 
