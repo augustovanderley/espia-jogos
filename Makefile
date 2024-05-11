@@ -20,4 +20,7 @@ check:
 check-ipdb:
 	poetry run python -m pytest -s
 
+streamlit:
+	poetry run streamlit run espia_jogos/front.py
+
 .PHONY: all check
