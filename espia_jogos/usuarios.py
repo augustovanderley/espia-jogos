@@ -37,4 +37,3 @@ def escreve_dados_usuarios(dados_usuario: List[dict], caminho_output: Path, over
     with open(caminho_output, "w") as file:
         file.write(json.dumps(dados_usuario, indent=4))
 
-usuarios = load_usuarios_from_json("meus_amigos.json")

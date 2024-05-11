@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 import typer
 
-from espia_jogos.usuarios import usuarios, carrega_dados_de_grupo_de_usuarios, escreve_dados_usuarios
+from espia_jogos.usuarios import load_usuarios_from_json, carrega_dados_de_grupo_de_usuarios, escreve_dados_usuarios
 from espia_jogos.ludopedia import Ludopedia
 
 app = typer.Typer()
@@ -19,7 +19,7 @@ def callback():
 @app.command()
 def jogos(nome_jogo: str) -> None:
     print(f"Quem tem o jogo com o termo {nome_jogo}?")
-    for usuario in usuarios:
+    for usuario in load_usuarios_from_json("meus_amigos.json"):
         colecao = Ludopedia.request_collection(usuario.id_usuario, nome_jogo)
         print_collection(usuario, colecao)
 
@@ -27,7 +27,7 @@ def jogos(nome_jogo: str) -> None:
 @app.command()
 def usuario(usuario_procurado: str) -> None:
     usuarios = Ludopedia.request_users(usuario_procurado)
-    for usuario in usuarios:
+    for usuario in load_usuarios_from_json("meus_amigos.json"):
         if usuario["usuario"].lower() == usuario_procurado.lower():
             print_usuario(usuario)
             break
