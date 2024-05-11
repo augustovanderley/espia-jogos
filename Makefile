@@ -17,4 +17,7 @@ grupo:
 check:
 	poetry run python -m pytest
 
+check-ipdb:
+	poetry run python -m pytest -s
+
 .PHONY: all check
