@@ -26,11 +26,8 @@ def jogos(nome_jogo: str) -> None:
 
 @app.command()
 def usuario(usuario_procurado: str) -> None:
-    usuarios = Ludopedia.request_users(usuario_procurado)
-    for usuario in usuarios:
-        if usuario["usuario"].lower() == usuario_procurado.lower():
-            print_usuario(usuario)
-            break
+    usuario = Ludopedia.request_user(usuario_procurado)
+    print_usuario(usuario)
 
 
 @app.command()
@@ -42,7 +39,7 @@ def extrai_grupo(id_grupo: int, overwrite=True, caminho_output : Path = OUTPUT_C
         print(f"An error occurred: {e}")
 
 
-def print_collection(usuario: str, colecao: list[str]) -> None:
+def print_collection(usuario: dict, colecao: list[str]) -> None:
     if colecao:
         print("-" * 20)
         name_to_display = usuario.nome_legivel if usuario.nome_legivel else usuario.usuario
@@ -55,7 +52,7 @@ def print_collection(usuario: str, colecao: list[str]) -> None:
         print("")
 
 
-def print_usuario(usuario: str) -> None:
+def print_usuario(usuario: dict) -> None:
     informacao = {
         "id": usuario["id_usuario"],
         "usuario": usuario["usuario"],

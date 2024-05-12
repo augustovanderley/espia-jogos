@@ -21,7 +21,9 @@ def display_collection(usuario, colecao):
         html_content += "</table>"
         col1, col2 = st.columns(2)
         with col1:
-            st.image(thumbnail_url, caption=name_to_display, width=50)
+            st.image(thumbnail_url, caption=name_to_display, width=110)
+        
+        st.markdown("---")
         with col2:
             st.markdown(html_content, unsafe_allow_html=True)
 

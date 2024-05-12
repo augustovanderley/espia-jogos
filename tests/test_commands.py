@@ -22,11 +22,11 @@ def mock_ludopedia(monkeypatch):
     def request_collection(user_id, game_name):
         return [{'nm_jogo': 'Catan', 'vl_nota': 5}]
 
-    def request_users(user_search):
-        return [{'id_usuario': '123', 'usuario': 'johndoe'}]
+    def request_user(user_search):
+        return {'id_usuario': '123', 'usuario': 'johndoe'}
 
     monkeypatch.setattr('espia_jogos.ludopedia.Ludopedia.request_collection', request_collection)
-    monkeypatch.setattr('espia_jogos.ludopedia.Ludopedia.request_users', request_users)
+    monkeypatch.setattr('espia_jogos.ludopedia.Ludopedia.request_user', request_user)
 
 
 @pytest.fixture

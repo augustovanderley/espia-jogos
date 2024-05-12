@@ -29,7 +29,7 @@ class Ludopedia:
         return response.json()["colecao"]
 
     @classmethod
-    def request_users(cls, usuario_procurado: str) -> dict[str, str]:
+    def request_user(cls, usuario_procurado: str) -> dict[str, str]:
         endpoint = f"{cls.base_url}/usuarios"
         params = {
             "search": usuario_procurado,
@@ -38,4 +38,10 @@ class Ludopedia:
         if response.status_code != 200:
             print(f"Erro ao buscar dados: {response.status_code}")
             return []
-        return response.json()["usuarios"]
+        
+        for usuario in response.json()["usuarios"]:
+            if usuario["usuario"].lower() == usuario_procurado.lower():
+                return usuario
+        raise Exception("User not found.")
+
+    
