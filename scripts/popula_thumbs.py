@@ -1,7 +1,5 @@
 import json
-import requests
 from dotenv import load_dotenv
-import os
 
 from espia_jogos.ludopedia import Ludopedia
 
