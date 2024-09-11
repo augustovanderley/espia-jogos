@@ -8,7 +8,7 @@ jogos:
 	poetry run espia jogos $(JOGO)
 
 amigos:
-	poetry run espia usuario $(AMIGO)
+	poetry run espia usuario $(AMIGOS)
 
 grupo:
 	poetry run espia extrai-grupo $(GRUPO)
@@ -22,5 +22,8 @@ check-ipdb:
 
 streamlit:
 	poetry run streamlit run espia_jogos/front.py
+
+run-server:
+	uvicorn espia_jogos.api:app --reload
 
 .PHONY: all check

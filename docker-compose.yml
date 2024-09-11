@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: espia_jogos_app
+    ports:
+      - "8000:8000"
+    environment:
+      - LUDOPEDIA_ACCESS_TOKEN=${LUDOPEDIA_ACCESS_TOKEN}
+    volumes:
+      - .:/app

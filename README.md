@@ -53,6 +53,12 @@ foo@bar:~$ espia usuario AugustVanderley
 }
 ```
 
+ou usando make
+```bash
+make amigos AMIGOS="user1 user2"
+```
+
+
 Copie e cole o trecho acima no arquivo `meus_amigos.json` para adicionar o usuário na sua base de dados.
 
 ### Buscando jogos na coleção de amigos

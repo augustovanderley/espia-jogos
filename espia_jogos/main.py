@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 import typer
+from typing import List
 
 from espia_jogos.usuarios import load_usuarios_from_json, carrega_dados_de_grupo_de_usuarios, escreve_dados_usuarios
 from espia_jogos.ludopedia import Ludopedia
@@ -25,12 +26,14 @@ def jogos(nome_jogo: str) -> None:
 
 
 @app.command()
-def usuario(usuario_procurado: str) -> None:
-    usuarios = Ludopedia.request_users(usuario_procurado)
-    for usuario in usuarios:
-        if usuario["usuario"].lower() == usuario_procurado.lower():
-            print_usuario(usuario)
-            break
+def usuario(usuario_procurado: List[str]) -> None:
+    for nome in usuario_procurado:
+        usuarios = Ludopedia.request_users(nome)
+        for usuario in usuarios:
+            if usuario["usuario"].lower() == nome.lower():
+                print_usuario(usuario)
+                break
+
 
 
 @app.command()
@@ -60,6 +63,8 @@ def print_usuario(usuario: str) -> None:
         "id": usuario["id_usuario"],
         "usuario": usuario["usuario"],
         "nome_legivel": "INSIRA NOME LEGIVEL",
+        "thumb": usuario["thumb"],
+        "priority_search": "false",
     }
     print(json.dumps(informacao, indent=4))
 
